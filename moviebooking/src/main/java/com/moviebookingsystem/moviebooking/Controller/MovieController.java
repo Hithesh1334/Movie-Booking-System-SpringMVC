@@ -17,16 +17,23 @@ import org.springframework.ui.Model;
 @Controller
 public class MovieController {
     
+    // HOME PAGE
     @GetMapping("/")
     public ModelAndView home(Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home"); // the name of the HTML template
         return modelAndView;
     }
+    @PostMapping("/home-page")
+    public String handleHomeButton(){
+        return "redirect:/";
+    }
 
     @Autowired
     private movieServiceimp service;
 
+
+    // MOVIE PAGE
     @GetMapping("/movie")
     public ModelAndView movie(Model model){
         ModelAndView modelAndView = new ModelAndView();
@@ -36,25 +43,37 @@ public class MovieController {
         System.out.println(data);
         return modelAndView;
     }
+    @PostMapping("/movie-page")
+    public String handleMovieButton(){
+        return "redirect:/movie";
+    }
+    @PostMapping("/button-click")
+    public String handleButtonClick(){
+            return "redirect:/movie";
+    }
 
+    // LOGIN PAGE 
     @GetMapping("/login")
     public ModelAndView login(Model model){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
     }
+    
 
-    @PostMapping("/button-click")
-    public String handleButtonClick(){
-            return "redirect:/movie";
-    }
-
+    // BOOKING PAGE
     @GetMapping("/book")
     public ModelAndView book(Model model){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("book");
         return modelAndView;
     }
+    @PostMapping("/booking-page")
+    public String handleBookButton(){
+        return "redirect:/book";
+    }
+
+    // CANCEL PAGE
     @GetMapping("/cancel")
     public ModelAndView cancel(Model model){
         ModelAndView modelAndView = new ModelAndView();
