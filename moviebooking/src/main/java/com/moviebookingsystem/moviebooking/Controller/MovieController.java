@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moviebookingsystem.moviebooking.Model.model;
-import com.moviebookingsystem.moviebooking.Repository.movieRepository;
+import com.moviebookingsystem.moviebooking.Services.movieServiceimp;
 
 import org.springframework.ui.Model;
 
@@ -26,7 +26,7 @@ public class MovieController {
     }
 
     @Autowired
-    private movieRepository repository;
+    private movieServiceimp service;
 
     @GetMapping("/movie")
     public ModelAndView movie(Model model){
@@ -40,11 +40,12 @@ public class MovieController {
     @GetMapping("/login")
     public ModelAndView login(Model model){
         System.out.println("INSIDE");
-        List<model> data = repository.findAll();
+        List<model> data = service.findAllMovies();//findallmovies
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         System.out.println(data);
         model.addAttribute("data",data);
+        System.out.println(data);
         return modelAndView;
     }
 

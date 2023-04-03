@@ -9,15 +9,13 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="entity" items="${data}">
-                <tr>
-                    <td>${entity.id}</td>
-                </tr>
-            </c:forEach>
+            <tr th:each="movie : ${data}">
+                <td th:text="${movie.id}"></td>
+            </tr>
         </tbody>
     </table>
     </body>

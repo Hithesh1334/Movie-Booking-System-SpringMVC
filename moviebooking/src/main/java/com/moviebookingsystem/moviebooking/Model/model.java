@@ -10,6 +10,10 @@ public class model {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
+    public model(){
+        
+    }
+
     public model(int id) {
         System.out.println("CONSTRUCTOR---------------------");
         this.id = id;
