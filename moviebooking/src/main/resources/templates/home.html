@@ -1,39 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Booking System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
-  
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-	  <h1 class="text-center">Movie Booking System</h1>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <!-- <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-      </li> -->
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Movies</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Login</button>
-      </li>
-    </ul>
-    <!-- <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-        CONTENT
-      </div> -->
-      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-        CONTENT
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Movie Booking System</a>
+      <!-- Toggler/collapsible Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <form method="post" action="/home-page">
+              <a class="nav-link" href="#">Home</a>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="/movie-page">
+              <a class="nav-link" href="#">Movie</a>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="/booking-page">
+              <a class="nav-link" href="#">Booking</a>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="/login-page">
+              <a class="nav-link" href="#">Login</a>
+            </form>
+          </li>
+        </ul>
       </div>
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-        CONTENT
+    </nav>
+    
+    <!-- Main content -->
+    <div class="container mt-5">
+      <div class="jumbotron">
+        <h1>Welcome to our Movie Booking System!</h1>
+        <p class="lead">Book your favorite movies online in just a few clicks.</p>
+        <hr class="my-4">
+        <p>Choose from a wide selection of movies and showtimes.</p>
+        <form method="post" action="/button-click">
+          <button  class="btn btn-primary btn-lg" href="#" role="button">Browse Movies</button>
+        </form>
+        
       </div>
     </div>
-	
-</body>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">© 2023 Movie Booking System</p>
+          </div>
+          <div class="col-md-6 text-right">
+            <p class="mb-0">Contact us: support@moviebookingsystem.com</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
-<!DOCTYPE html>
-

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,27 +8,68 @@
   </head>
   
   <body>
-	<h1 class="text-center">Movies</h1>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <h1>List of Data</h1>
-  <table class="movie-table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Availability</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="movie : ${data}">
-        <td th:text="${movie.id}"></td>
-        <td th:text="${movie.name}"></td>
-        <td th:text="${movie.date}"></td>
-        <td th:text="${movie.availability}"></td>
-      </tr>
-    </tbody>
-  </table>
+	<!-- NAV BAR -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Movie Booking System</a>
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="mt-5">
+  <div class="row" th:each="movie : ${data}">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${movie.name}"></h5>
+          <p class="card-text" th:text="${movie.id}"></p>
+          <p class="card-text" th:text="${movie.date}"></p>
+          <p class="card-text" th:text="${movie.availability}"></p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="movie1">
+            <button>Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <table class="movie-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="movie : ${data}">
+          <td th:text="${movie.id}"></td>
+          <td th:text="${movie.name}"></td>
+          <td th:text="${movie.date}"></td>
+          <td th:text="${movie.availability}"></td>
+        </tr>
+      </tbody>
+    </table> -->
   
   <style>
     .movie-table {
@@ -58,68 +99,7 @@
   </style>
   
     </br>
-    <h3>Book movie</h3>
-    <form class="booking-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-      
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      
-        <label for="date">Preferred Date:</label>
-        <input type="date" id="date" name="date" required>
-      
-        <label for="time">Preferred Time:</label>
-        <input type="time" id="time" name="time" required>
-      
-        <label for="tickets">Number of Tickets:</label>
-        <input type="number" id="tickets" name="tickets" min="1" max="10" required>
-      
-        <input type="submit" value="Book Now">
-      </form>
-      
-      <style>
-        .booking-form {
-          width: 80%;
-          margin: auto;
-          background-color: #f9f9f9;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0px 0px 10px #ccc;
-        }
-      
-        label {
-          display: block;
-          margin-top: 10px;
-        }
-      
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        input[type="time"],
-        input[type="number"] {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 20px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          box-sizing: border-box;
-        }
-      
-        input[type="submit"] {
-          background-color: #4CAF50;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-      
-        input[type="submit"]:hover {
-          background-color: #3e8e41;
-        }
-      </style>
-      
+    
 </body>
 </html>
 <!DOCTYPE html>

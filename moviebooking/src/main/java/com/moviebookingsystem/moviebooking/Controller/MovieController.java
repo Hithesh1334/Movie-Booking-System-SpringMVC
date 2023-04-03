@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,14 +39,14 @@ public class MovieController {
 
     @GetMapping("/login")
     public ModelAndView login(Model model){
-        System.out.println("INSIDE");
-        List<model> data = service.findAllMovies();//findallmovies
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        System.out.println(data);
-        model.addAttribute("data",data);
-        System.out.println("THis is data "+data);
         return modelAndView;
+    }
+
+    @PostMapping("/button-click")
+    public String handleButtonClick(){
+            return "redirect:/movie";
     }
 
     @GetMapping("/book")
