@@ -20,8 +20,6 @@ public class MovieController {
     public ModelAndView home(Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home"); // the name of the HTML template
-        // model.addAttribute("message","hello");
-        // model.addAttribute("message", "Hello World this is movie!"); // add any data you want to pass to the HTML template
         return modelAndView;
     }
 
@@ -34,6 +32,7 @@ public class MovieController {
         List<model> data = service.findAllMovies(); 
         modelAndView.setViewName("movie");
         model.addAttribute("data",data);
+        System.out.println(data);
         return modelAndView;
     }
 
