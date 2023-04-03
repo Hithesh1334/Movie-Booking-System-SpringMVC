@@ -31,9 +31,9 @@ public class MovieController {
     @GetMapping("/movie")
     public ModelAndView movie(Model model){
         ModelAndView modelAndView = new ModelAndView();
-        
+        List<model> data = service.findAllMovies(); 
         modelAndView.setViewName("movie");
-        
+        model.addAttribute("data",data);
         return modelAndView;
     }
 
@@ -45,7 +45,7 @@ public class MovieController {
         modelAndView.setViewName("login");
         System.out.println(data);
         model.addAttribute("data",data);
-        System.out.println(data);
+        System.out.println("THis is data "+data);
         return modelAndView;
     }
 
