@@ -88,22 +88,55 @@ public class MovieController {
     }
     
 
-    // BOOKING PAGE
-    @GetMapping("/book")
-    public ModelAndView book(Model model){
+    // on clicking on book directing to booking page with the infomation of the movie
+    @PostMapping("/book")
+    public ModelAndView bookingData(@RequestParam("id") int id,Model model){
         ModelAndView modelAndView = new ModelAndView();
-        
-        //Checking if user has logined or not 
+
+        String name="";
+
+        List<listMovies> data = service.findAllMovies(); // listing all movies 
+
+        //code to assign the movie 
+        for(int i=0;i<data.size();i++){
+            System.out.println(data.get(i));
+            listMovies movie = data.get(i);
+            int i_id = movie.getId();
+            String movieName = movie.getName();
+            if (id == i_id){
+                name = movieName;
+            }
+        }
         if (status == 1){
-            modelAndView.setViewName("book"); //if yes then open booking page
+            modelAndView.setViewName("book");
+            model.addAttribute("movieName",name);
+            model.addAttribute("id",id);
             return modelAndView;
         }
         else{
             modelAndView.setViewName("login"); //if no then open login page
             return modelAndView;
         }
+        
     }
-    
+
+
+    // @GetMapping("/book")
+    // public ModelAndView book(Model model){
+    //     ModelAndView modelAndView = new ModelAndView();
+        
+    //     //Checking if user has logined or not 
+    //     if (status == 1){
+    //         modelAndView.setViewName("book"); //if yes then open booking page
+    //         return modelAndView;
+    //     }
+    //     else{
+    //         modelAndView.setViewName("login"); //if no then open login page
+    //         return modelAndView;
+    //     }
+    // }
+
+
     @PostMapping("/booking-page")
     public String handleBookButton(){
         return "redirect:/book";

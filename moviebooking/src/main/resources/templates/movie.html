@@ -34,23 +34,76 @@
       </ul>
     </div>
   </nav>
+ 
   <div class="mt-5">
+  <!-- <form method="Post" action="/book" id="booking-form">
   <div class="row" th:each="movie : ${data}">
     <div class="col-md-6">
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title" th:text="${movie.name}"></h5>
-          <p class="card-text" th:text="${movie.id}"></p>
+          <p class="card-text" id="id" th:text="${movie.id}"></p>
           <p class="card-text" th:text="${movie.date}"></p>
-          <p class="card-text" th:text="${movie.availability}"></p>
+          <p class="card-text" th:text="${movie.availability}" id="availability-${movie.id}"></p>
           <div class="form-check">
-            <button>Book</button>
+            <input type="hidden" name="name" th:value="${movie.name}"/>
+            <input type="hidden" name="id" th:value="${movie.id}"/>
+            <button type="submit">Book</button> 
+            <button type="button" >Book</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  </form> -->
+  <form method="post" action="/book" id="booking-form">
+    <div class="row" th:each="movie : ${data}">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title" id="name" th:text="${movie.name}"></h5>
+            <p class="card-text" id="id" th:text="${movie.id}"></p>
+            <p class="card-text" th:text="${movie.date}"></p>
+            <p class="card-text" th:text="${movie.availability}" id="availability-${movie.id}"></p>
+            <div class="form-check">
+              <!-- <input type="hidden" name="name" th:value="${movie.name}"/> -->
+              <input type="hidden" name="id" th:value="${movie.id}"/>
+              <button type="button" class="book-btn">Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <script>
+    const bookBtns = document.querySelectorAll('.book-btn');
+  
+    bookBtns.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        // prevent the default form submission behavior
+        event.preventDefault();
+  
+        // get the form element
+        const form = document.querySelector('#booking-form');
+  
+        // get the values of the hidden form inputs
+        // const name = btn.parentElement.querySelector('input[name="name"]').value;
+        const id = btn.parentElement.querySelector('input[name="id"]').value;
+        console.log(name)
+        // set the values of the visible form inputs
+        // form.querySelector('input[name="name"]').value = name;
+        form.querySelector('input[name="id"]').value = id;
+  
+        // submit the form
+        form.submit();
+      });
+    });
+  </script>
+  
+  
+    
+  <h1 th:text="${message}"></h1>
     <!-- <table class="movie-table">
       <thead>
         <tr>
