@@ -56,9 +56,10 @@ public class MovieController {
    
     //Login authentication part 
     @PostMapping("/login")
-    public void loginAuthentication(@RequestParam("username") String username, @RequestParam("password") String ppassword){
+    public ModelAndView loginAuthentication(@RequestParam("username") String username, @RequestParam("password") String ppassword,Model model){
         List<loginAuth> data = service.findAllUser(); // getting all the users form the database
-
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
         for(int i=0;i<data.size();i++){
             loginAuth login = data.get(i);
 
@@ -72,9 +73,13 @@ public class MovieController {
             // System.out.println(status);
             if ((name.equals(username)) && (password.equals(ppassword))){
                 status = 1;
-            }
-            // System.out.println(status);
+                modelAndView.setViewName("loginSuccess");
+                // System.out.println(status);
+                return modelAndView;
+
+            }   
         }
+        return modelAndView;
         
     }
 
