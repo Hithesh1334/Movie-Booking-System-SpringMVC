@@ -121,20 +121,20 @@ public class MovieController {
     }
 
 
-    // @GetMapping("/book")
-    // public ModelAndView book(Model model){
-    //     ModelAndView modelAndView = new ModelAndView();
+    @GetMapping("/book")
+    public ModelAndView book(Model model){
+        ModelAndView modelAndView = new ModelAndView();
         
-    //     //Checking if user has logined or not 
-    //     if (status == 1){
-    //         modelAndView.setViewName("book"); //if yes then open booking page
-    //         return modelAndView;
-    //     }
-    //     else{
-    //         modelAndView.setViewName("login"); //if no then open login page
-    //         return modelAndView;
-    //     }
-    // }
+        //Checking if user has logined or not 
+        if (status == 1){
+            modelAndView.setViewName("book"); //if yes then open booking page
+            return modelAndView;
+        }
+        else{
+            modelAndView.setViewName("login"); //if no then open login page
+            return modelAndView;
+        }
+    }
 
 
     @PostMapping("/booking-page")
