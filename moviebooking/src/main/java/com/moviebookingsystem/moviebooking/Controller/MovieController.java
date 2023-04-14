@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.moviebookingsystem.moviebooking.Model.addUser;
 import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
 import com.moviebookingsystem.moviebooking.Services.movieServiceimp;
@@ -72,12 +73,24 @@ public class MovieController {
             // System.out.println(name+password);
             // System.out.println(status);
             if ((name.equals(username)) && (password.equals(ppassword))){
-                status = 1;
-                modelAndView.setViewName("loginSuccess");
+                if (status == 0){
+                    status = 1;
+                    modelAndView.setViewName("loginSuccess");
                 // System.out.println(status);
-                return modelAndView;
+                    model.addAttribute("loginMessage","Successfully Logined!");
+                    model.addAttribute("loginMessage2","You have successfully logged in.");
+                    return modelAndView;
+                }
+                else{
+                    modelAndView.setViewName("loginSuccess");
+                // System.out.println(status);
+                    model.addAttribute("loginMessage","Already Logged In");
+                    model.addAttribute("loginMessage2","😀");
+                    return modelAndView;
+                }
 
             }   
+            
         }
         return modelAndView;
         
@@ -125,7 +138,7 @@ public class MovieController {
         
     }
 
-
+    // Direct to booking page
     @GetMapping("/book")
     public ModelAndView book(Model model){
         ModelAndView modelAndView = new ModelAndView();
@@ -142,16 +155,28 @@ public class MovieController {
     }
 
 
-    @PostMapping("/booking-page")
-    public String handleBookButton(){
-        return "redirect:/book";
-    }
-
     // CANCEL PAGE
     @GetMapping("/cancel")
     public ModelAndView cancel(Model model){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cancel");
         return modelAndView;
+    }
+
+
+    //Registeration
+    @GetMapping("/register")
+    public ModelAndView register(Model model){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("register");
+        
+        
+        return modelAndView;
+    }
+
+    @PostMapping("/register")
+    public void registerData(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("email") String email){
+        service.saveUser(name,password,email);
+        System.out.println(name+password);
     }
 }
