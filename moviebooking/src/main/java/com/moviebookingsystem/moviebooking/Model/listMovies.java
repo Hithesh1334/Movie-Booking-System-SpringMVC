@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="movie")
-public class model {
+public class listMovies {
     
     @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,10 +33,10 @@ public class model {
     public void setAvailability(int availability) {
         this.availability = availability;
     }
-    public model(){
+    public listMovies(){
 
     }
-    public model(int id,String name,String date,int availability) {
+    public listMovies(int id,String name,String date,int availability) {
         System.out.println("CONSTRUCTOR---------------------");
         this.id = id;
         this.name = name;

@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.moviebookingsystem.moviebooking.Model.model;
+import com.moviebookingsystem.moviebooking.Model.listMovies;
+import com.moviebookingsystem.moviebooking.Model.loginAuth;
 import com.moviebookingsystem.moviebooking.Services.movieServiceimp;
 
 import org.springframework.ui.Model;
@@ -37,7 +39,7 @@ public class MovieController {
     @GetMapping("/movie")
     public ModelAndView movie(Model model){
         ModelAndView modelAndView = new ModelAndView();
-        List<model> data = service.findAllMovies(); 
+        List<listMovies> data = service.findAllMovies(); 
         modelAndView.setViewName("movie");
         model.addAttribute("data",data);
         System.out.println(data);
@@ -49,12 +51,20 @@ public class MovieController {
     }
     @PostMapping("/button-click")
     public String handleButtonClick(){
+            System.out.println("Button Click");
             return "redirect:/movie";
+    }
+    @PostMapping("/login")
+    public String addUser(@RequestParam loginAuth user){
+        System.out.println("LOGIIN");
+        service.saveUser(user);
+        return "redirect:/movie";
     }
 
     // LOGIN PAGE 
     @GetMapping("/login")
     public ModelAndView login(Model model){
+        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
