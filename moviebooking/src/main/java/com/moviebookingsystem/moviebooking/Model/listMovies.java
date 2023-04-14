@@ -15,6 +15,18 @@ public class listMovies {
     private String date;
     @Column 
     private int availability;
+
+    public listMovies(){
+
+    }
+
+    public listMovies(int id,String name,String date,int availability) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.availability = availability;
+    }
+
     public String getName() {
         return name;
     }
@@ -33,23 +45,11 @@ public class listMovies {
     public void setAvailability(int availability) {
         this.availability = availability;
     }
-    public listMovies(){
-
-    }
-    public listMovies(int id,String name,String date,int availability) {
-        System.out.println("CONSTRUCTOR---------------------");
-        this.id = id;
-        this.name = name;
-        this.date = date;
-        this.availability = availability;
-    }
     public int getId() {
-        System.out.println("GETTER---------------------");
         return id;
     }
 
     public void setId(int id) {
-        System.out.println("SETTER---------------------");
         this.id = id;
     }
 

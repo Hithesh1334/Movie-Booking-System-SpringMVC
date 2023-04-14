@@ -2,14 +2,11 @@ package com.moviebookingsystem.moviebooking.Services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
 import com.moviebookingsystem.moviebooking.Repository.listMovieRepository;
 import com.moviebookingsystem.moviebooking.Repository.loginAuthRepository;
-
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +21,7 @@ public class movieServiceimp implements movieService{
         this.loginAuthRepository = loginAuthRepository;
     }
 
+    //getting MOVIES data
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
     public List<listMovies> findAllMovies() {
@@ -31,6 +29,7 @@ public class movieServiceimp implements movieService{
         return movieRepository.findAll();
     }
 
+    //getting USER data
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
     public List<loginAuth> findAllUser() {

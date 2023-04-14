@@ -19,9 +19,12 @@ import org.springframework.ui.Model;
 @Controller
 public class MovieController {
     
+    // These variables are used for authentication 
     private int status = 0;
     private String name  ;
     private String password ;
+
+
     // HOME PAGE
     @GetMapping("/")
     public ModelAndView home(Model model) {
@@ -29,52 +32,48 @@ public class MovieController {
         modelAndView.setViewName("home"); // the name of the HTML template
         return modelAndView;
     }
-    @PostMapping("/home-page")
-    public String handleHomeButton(){
-        return "redirect:/";
-    }
 
+    // SERVICE part
     @Autowired
     private movieServiceimp service;
-
 
 
     // MOVIE PAGE
     @GetMapping("/movie")
     public ModelAndView movie(Model model){
         ModelAndView modelAndView = new ModelAndView();
-        List<listMovies> data = service.findAllMovies(); 
+        List<listMovies> data = service.findAllMovies(); //getting movies from database
         modelAndView.setViewName("movie");
-        model.addAttribute("data",data);
-        System.out.println(data);
+        model.addAttribute("data",data);    // sending it to the frontend
         return modelAndView;
     }
-    @PostMapping("/movie-page")
-    public String handleMovieButton(){
-        return "redirect:/movie";
-    }
-    @PostMapping("/button-click")
+    
+    // When clicked on browse movie button in home page redirect it to movies page
+    @PostMapping("/movies-page")
     public String handleButtonClick(){
-            System.out.println("Button Click");
             return "redirect:/movie";
     }
    
+    //Login authentication part 
     @PostMapping("/login")
     public void loginAuthentication(@RequestParam("username") String username, @RequestParam("password") String ppassword){
-        List<loginAuth> data = service.findAllUser();
-        System.out.println(data);
+        List<loginAuth> data = service.findAllUser(); // getting all the users form the database
+
         for(int i=0;i<data.size();i++){
             loginAuth login = data.get(i);
+
+            // names and password form the database
             name = login.getName();
             password = login.getPassword();
-            System.out.println("name" +name+" password " +password);
-            System.out.println("name "+username+" password "+ppassword);
-            System.out.println(name+password);
-            System.out.println(status);
+
+            // System.out.println("name" +name+" password " +password);
+            // System.out.println("name "+username+" password "+ppassword);
+            // System.out.println(name+password);
+            // System.out.println(status);
             if ((name.equals(username)) && (password.equals(ppassword))){
                 status = 1;
             }
-            System.out.println(status);
+            // System.out.println(status);
         }
         
     }
@@ -93,15 +92,18 @@ public class MovieController {
     @GetMapping("/book")
     public ModelAndView book(Model model){
         ModelAndView modelAndView = new ModelAndView();
+        
+        //Checking if user has logined or not 
         if (status == 1){
-            modelAndView.setViewName("book");
+            modelAndView.setViewName("book"); //if yes then open booking page
             return modelAndView;
         }
         else{
-            modelAndView.setViewName("login");
+            modelAndView.setViewName("login"); //if no then open login page
             return modelAndView;
         }
     }
+    
     @PostMapping("/booking-page")
     public String handleBookButton(){
         return "redirect:/book";
