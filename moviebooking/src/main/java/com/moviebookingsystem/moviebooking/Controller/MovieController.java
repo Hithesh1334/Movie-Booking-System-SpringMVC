@@ -19,6 +19,9 @@ import org.springframework.ui.Model;
 @Controller
 public class MovieController {
     
+    private int status = 0;
+    private String name  ;
+    private String password ;
     // HOME PAGE
     @GetMapping("/")
     public ModelAndView home(Model model) {
@@ -33,6 +36,7 @@ public class MovieController {
 
     @Autowired
     private movieServiceimp service;
+
 
 
     // MOVIE PAGE
@@ -54,17 +58,31 @@ public class MovieController {
             System.out.println("Button Click");
             return "redirect:/movie";
     }
+   
     @PostMapping("/login")
-    public String addUser(@RequestParam loginAuth user){
-        System.out.println("LOGIIN");
-        service.saveUser(user);
-        return "redirect:/movie";
+    public void loginAuthentication(@RequestParam("username") String username, @RequestParam("password") String ppassword){
+        List<loginAuth> data = service.findAllUser();
+        System.out.println(data);
+        for(int i=0;i<data.size();i++){
+            loginAuth login = data.get(i);
+            name = login.getName();
+            password = login.getPassword();
+            System.out.println("name" +name+" password " +password);
+            System.out.println("name "+username+" password "+ppassword);
+            System.out.println(name+password);
+            System.out.println(status);
+            if ((name.equals(username)) && (password.equals(ppassword))){
+                status = 1;
+            }
+            System.out.println(status);
+        }
+        
     }
+
 
     // LOGIN PAGE 
     @GetMapping("/login")
     public ModelAndView login(Model model){
-        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
@@ -75,8 +93,14 @@ public class MovieController {
     @GetMapping("/book")
     public ModelAndView book(Model model){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("book");
-        return modelAndView;
+        if (status == 1){
+            modelAndView.setViewName("book");
+            return modelAndView;
+        }
+        else{
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
     }
     @PostMapping("/booking-page")
     public String handleBookButton(){

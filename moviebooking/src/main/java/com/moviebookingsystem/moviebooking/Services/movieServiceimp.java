@@ -16,13 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class movieServiceimp implements movieService{
     private final listMovieRepository movieRepository;
+    private final loginAuthRepository loginAuthRepository;
 
-    @Autowired
-    private loginAuthRepository loginAuthRepository;
-
-    public movieServiceimp(listMovieRepository movieRepository) {
+    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository) {
         System.out.println("SERVICEIMP");
         this.movieRepository = movieRepository;
+        this.loginAuthRepository = loginAuthRepository;
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -32,8 +31,13 @@ public class movieServiceimp implements movieService{
         return movieRepository.findAll();
     }
 
-    public void saveUser(loginAuth user){
-        loginAuthRepository.save(user);
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Override
+    public List<loginAuth> findAllUser() {
+        System.out.println("SELECT user");
+        return loginAuthRepository.findAll();
     }
+
+    
     
 }
