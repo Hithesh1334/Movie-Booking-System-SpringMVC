@@ -38,33 +38,17 @@
       </div>
     </nav>
     
-    <!-- Main content -->
-    <div class="container mt-5">
-      <h1>Enter Details</h1>
-      <hr>
-      <form method="post" action="book-movie">
-        <div class="form-group">
-          <label for="movie">Movie Name</label>
-          <input type="text" class="form-control"  id="name" th:value="${movieName}" name="movieName" required/>
-        </div>
-        <div class="form-group">
-          <label for="date">Movie Id</label>
-          <input type="text" class="form-control" name="movieId" id="date" th:value="${id}">
-        </div>
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" name="username" id="name">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" name="email" id="email">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number:</label>
-          <input type="tel" class="form-control" name="phoneNo" id="phone" pattern="[0-9]{10}">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+    <div class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 mx-auto">
+				<div class="card">
+					<div class="card-body text-center">
+						<h2 th:text="${bookedmessage}"></h2>
+						<p th:text="${bookedmessage2}"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

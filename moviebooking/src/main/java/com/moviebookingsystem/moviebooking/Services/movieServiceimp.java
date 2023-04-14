@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.moviebookingsystem.moviebooking.Model.addUser;
+import com.moviebookingsystem.moviebooking.Model.addUserBooking;
 import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
+import com.moviebookingsystem.moviebooking.Repository.addUserBookingRepository;
 import com.moviebookingsystem.moviebooking.Repository.addUserRepository;
 import com.moviebookingsystem.moviebooking.Repository.listMovieRepository;
 import com.moviebookingsystem.moviebooking.Repository.loginAuthRepository;
@@ -18,12 +20,14 @@ public class movieServiceimp implements movieService{
     private final listMovieRepository movieRepository;
     private final loginAuthRepository loginAuthRepository;
     private final addUserRepository addUserRepository;
+    private final addUserBookingRepository addUserBookingRepository;
 
-    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository) {
+    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository) {
         System.out.println("SERVICEIMP");
         this.movieRepository = movieRepository;
         this.loginAuthRepository = loginAuthRepository;
         this.addUserRepository =  addUserRepository;
+        this.addUserBookingRepository = addUserBookingRepository;
     }
 
     //getting MOVIES data
@@ -52,12 +56,28 @@ public class movieServiceimp implements movieService{
         return addUserRepository.save(user);
     }
 
-    @Override
-    public addUser save() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+
+    public addUserBooking saveUserBooking(String movieName,int movieId,String userName,String email,String phoneNo) {
+        addUserBooking userBooking = new addUserBooking();
+        userBooking.setMovieName(movieName);
+        userBooking.setMovieId(movieId);
+        userBooking.setUserName(userName);
+        userBooking.setEmail(email);
+        userBooking.setPhoneNo(phoneNo);
+        return addUserBookingRepository.save(userBooking);
     }
 
+    @Override
+    public addUser saveUser() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveUser'");
+    }
+
+    @Override
+    public addUserBooking saveUserBooking() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveUserBooking'");
+    }
     
     
 }

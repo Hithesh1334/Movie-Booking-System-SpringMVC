@@ -154,6 +154,15 @@ public class MovieController {
         }
     }
 
+    @PostMapping("/book-movie")
+    public ModelAndView bookmovie(@RequestParam("movieName") String movieName, @RequestParam("movieId") int movieId,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("phoneNo") String phoneNo,Model model){
+        ModelAndView modelAndView = new ModelAndView();
+        service.saveUserBooking(movieName, movieId, username,email, phoneNo);
+        modelAndView.setViewName("booked");
+        model.addAttribute("bookedmessage","Done");
+        model.addAttribute("bookedmessage2","Happy watching!");
+        return modelAndView;
+    }
 
     // CANCEL PAGE
     @GetMapping("/cancel")
