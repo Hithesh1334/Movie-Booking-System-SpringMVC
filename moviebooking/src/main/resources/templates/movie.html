@@ -37,48 +37,44 @@
       </ul>
     </div>
   </nav>
+  <h1 class="text-center bg-primary">Fresh releases in cinemas</h1>
+  <div class="mt-5" >
  
-  <div class="mt-5">
-  <!-- <form method="Post" action="/book" id="booking-form">
-  <div class="row" th:each="movie : ${data}">
-    <div class="col-md-6">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title" th:text="${movie.name}"></h5>
-          <p class="card-text" id="id" th:text="${movie.id}"></p>
-          <p class="card-text" th:text="${movie.date}"></p>
-          <p class="card-text" th:text="${movie.availability}" id="availability-${movie.id}"></p>
-          <div class="form-check">
-            <input type="hidden" name="name" th:value="${movie.name}"/>
-            <input type="hidden" name="id" th:value="${movie.id}"/>
-            <button type="submit">Book</button> 
-            <button type="button" >Book</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form> -->
+  <style>
+    .card-title,h1 {
+      font-size: 30px;
+      font-family: 'Times New Roman', sans-serif;
+      margin-bottom: 10px;
+      padding:10px;
+      text-align: center;
+    }
+    h1{
+      color:white;
+    }
+    nav{
+        font-family: 'Times New Roman', sans-serif;
+      }
+    </style>
+
   <form method="post" action="/book" id="booking-form">
-    <div class="row" th:each="movie : ${data}">
-      <div class="col-md-6">
-        <div class="card mb-3">
+    <div class="row row-cols-1 row-cols-md-2" th:each="movie : ${data}">
+      <div class="col mb-4">
+        <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title" id="name" th:text="${movie.name}"></h5>
-            <p class="card-text" id="id" th:text="${movie.id}"></p>
-            <p class="card-text" th:text="${movie.date}"></p>
-            <p class="card-text" th:text="${movie.availability}" id="availability-${movie.id}"></p>
-            <div class="form-check">
-              <!-- <input type="hidden" name="name" th:value="${movie.name}"/> -->
+            <h5 class="card-title" th:text="${movie.name}"></h5>
+            <p class="card-text">ID: <span th:text="${movie.id}"></span></p>
+            <p class="card-text">Date: <span th:text="${movie.date}"></span></p>
+            <p class="card-text">Availability: <span id="availability-${movie.id}" th:text="${movie.availability}"></span></p>
+            <div class="form-check d-flex justify-content-end">
               <input type="hidden" name="id" th:value="${movie.id}"/>
-              <button type="button" class="book-btn">Book</button>
+              <button type="button" class="btn btn-primary book-btn">Book Now</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </form>
-  
+
   <script>
     const bookBtns = document.querySelectorAll('.book-btn');
   

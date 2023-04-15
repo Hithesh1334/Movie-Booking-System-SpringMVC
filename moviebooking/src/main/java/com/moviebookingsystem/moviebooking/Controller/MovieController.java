@@ -45,6 +45,9 @@ public class MovieController {
         ModelAndView modelAndView = new ModelAndView();
         List<listMovies> data = service.findAllMovies(); //getting movies from database
         modelAndView.setViewName("movie");
+        listMovies d = data.get(0);
+        String val = d.getImage();
+        System.out.println(val);
         model.addAttribute("data",data);    // sending it to the frontend
         return modelAndView;
     }
