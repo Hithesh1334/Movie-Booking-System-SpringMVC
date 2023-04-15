@@ -12,7 +12,7 @@
 
 * UI 
 1. 
-![alt text](Images\UI1.png)
+![alt text]([Images\UI1.png](https://github.com/Hithesh1334/Movie-Booking-System-SpringMVC/blob/master/Images/UI1.png))
 ----
 2. 
 ![alt text](Images\UI2.png)
