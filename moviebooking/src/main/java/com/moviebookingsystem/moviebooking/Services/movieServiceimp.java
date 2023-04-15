@@ -10,6 +10,7 @@ import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
 import com.moviebookingsystem.moviebooking.Repository.addUserBookingRepository;
 import com.moviebookingsystem.moviebooking.Repository.addUserRepository;
+import com.moviebookingsystem.moviebooking.Repository.cancleBookingRepository;
 import com.moviebookingsystem.moviebooking.Repository.listMovieRepository;
 import com.moviebookingsystem.moviebooking.Repository.loginAuthRepository;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,13 +22,15 @@ public class movieServiceimp implements movieService{
     private final loginAuthRepository loginAuthRepository;
     private final addUserRepository addUserRepository;
     private final addUserBookingRepository addUserBookingRepository;
+    private final cancleBookingRepository cancleBookingRepository;
 
-    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository) {
+    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository,cancleBookingRepository cancleBookingRepository) {
         System.out.println("SERVICEIMP");
         this.movieRepository = movieRepository;
         this.loginAuthRepository = loginAuthRepository;
         this.addUserRepository =  addUserRepository;
         this.addUserBookingRepository = addUserBookingRepository;
+        this.cancleBookingRepository = cancleBookingRepository;
     }
 
     //getting MOVIES data
@@ -80,4 +83,14 @@ public class movieServiceimp implements movieService{
     }
     
     
+    public void deleteBooking(int id){
+        cancleBookingRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteBooking() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deletBooking'");
+    }
+
 }

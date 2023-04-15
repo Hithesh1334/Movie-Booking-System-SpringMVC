@@ -12,6 +12,6 @@ public interface movieService {
     public List<loginAuth> findAllUser();
     public addUser saveUser();
     public addUserBooking saveUserBooking();
-
+    public void deleteBooking();
 }
 
