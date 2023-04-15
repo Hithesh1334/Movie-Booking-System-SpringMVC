@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.moviebookingsystem.moviebooking.Model.addPayment;
 import com.moviebookingsystem.moviebooking.Model.addUser;
 import com.moviebookingsystem.moviebooking.Model.addUserBooking;
 import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
+import com.moviebookingsystem.moviebooking.Repository.addPaymentRepository;
 import com.moviebookingsystem.moviebooking.Repository.addUserBookingRepository;
 import com.moviebookingsystem.moviebooking.Repository.addUserRepository;
 import com.moviebookingsystem.moviebooking.Repository.cancleBookingRepository;
@@ -23,15 +25,16 @@ public class movieServiceimp implements movieService{
     private final addUserRepository addUserRepository;
     private final addUserBookingRepository addUserBookingRepository;
     private final cancleBookingRepository cancleBookingRepository;
-    
+    private final addPaymentRepository addPaymentRepository;
 
-    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository,cancleBookingRepository cancleBookingRepository) {
+    public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository,cancleBookingRepository cancleBookingRepository,addPaymentRepository addPaymentRepository) {
         System.out.println("SERVICEIMP");
         this.movieRepository = movieRepository;
         this.loginAuthRepository = loginAuthRepository;
         this.addUserRepository =  addUserRepository;
         this.addUserBookingRepository = addUserBookingRepository;
         this.cancleBookingRepository = cancleBookingRepository;
+        this.addPaymentRepository = addPaymentRepository;
     }
 
     //getting MOVIES data
@@ -101,4 +104,22 @@ public class movieServiceimp implements movieService{
         System.out.println("SELECT");
         return addUserBookingRepository.findAll();
     }
+
+    public addPayment saveTransaction(String cardno,String expirydate,int cvv,String cardtype,int id,String nameoncard){
+        addPayment payment = new addPayment();
+        payment.setCardno(cardno);
+        payment.setExpirydate(expirydate);
+        payment.setCvv(cvv);
+        payment.setId(id);
+        payment.setNameoncard(nameoncard);
+        payment.setCardtype(cardtype);
+        return addPaymentRepository.save(payment);
+    }
+
+    @Override
+    public addPayment saveTransaction() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveTransaction'");
+    }
+
 }

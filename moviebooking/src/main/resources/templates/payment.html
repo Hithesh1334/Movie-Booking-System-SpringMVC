@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Method</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Choose a Payment Method</h1>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <form method="Post" action="payment">
+                <div class="form-group">
+                    <label for="cardnumber" >Movie Id</label>
+                    <input type="text" class="form-control" id="cardnumber" name="id" th:value="${movieid}">
+                  </div>
+              <div class="form-group">
+                <label for="cardnumber">Card Number</label>
+                <input type="text" class="form-control" id="cardnumber" name="cardno" placeholder="Enter card number">
+              </div>
+              <div class="form-group">
+                <label for="expirydate">Expiry Date</label>
+                <input type="text" class="form-control" id="expirydate" name="expirydate" placeholder="MM/YY">
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="number" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV">
+              </div>
+              <div class="form-group">
+                <label for="cardtype">Card Type</label>
+                <select class="form-control" id="cardtype" name="cardtype">
+                  <option value="">Choose a card type</option>
+                  <option value="visa">Visa</option>
+                  <option value="mastercard">Mastercard</option>
+                  <option value="amex">American Express</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nameoncard">Name on Card</label>
+                <input type="text" class="form-control" id="nameoncard" name="nameoncard" placeholder="Enter name on card">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

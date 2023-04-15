@@ -158,9 +158,10 @@ public class MovieController {
     public ModelAndView bookmovie(@RequestParam("movieName") String movieName, @RequestParam("movieId") int movieId,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("phoneNo") String phoneNo,Model model){
         ModelAndView modelAndView = new ModelAndView();
         service.saveUserBooking(movieName, movieId, username,email, phoneNo);
-        modelAndView.setViewName("booked");
-        model.addAttribute("bookedmessage","Done");
-        model.addAttribute("bookedmessage2","Happy watching!");
+        modelAndView.setViewName("payment");
+        // model.addAttribute("bookedmessage","Done");
+        // model.addAttribute("bookedmessage2","Happy watching!");
+        model.addAttribute("movieid",movieId);
         return modelAndView;
     }
 
@@ -207,8 +208,6 @@ public class MovieController {
     public ModelAndView register(Model model){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("register");
-        
-        
         return modelAndView;
     }
 
@@ -216,5 +215,15 @@ public class MovieController {
     public void registerData(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("email") String email){
         service.saveUser(name,password,email);
         System.out.println(name+password);
+    }
+
+    @PostMapping("/payment")
+    public ModelAndView paymentdata(@RequestParam("cardno") String cardno,@RequestParam("expirydate") String expirydate,@RequestParam("cvv") int cvv,@RequestParam("cardtype") String cardtype,@RequestParam("nameoncard") String nameoncard,@RequestParam("id") int id,Model model){
+        ModelAndView modelAndView = new ModelAndView();
+        service.saveTransaction(cardno,expirydate,cvv,cardtype,id,nameoncard);
+        modelAndView.setViewName("booked");
+        model.addAttribute("bookedmessage", "Success");
+        model.addAttribute("bookedmessage2", "!");
+        return modelAndView;
     }
 }
