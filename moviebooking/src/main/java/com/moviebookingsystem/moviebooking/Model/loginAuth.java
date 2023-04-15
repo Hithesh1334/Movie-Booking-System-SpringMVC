@@ -8,7 +8,17 @@ public class loginAuth {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String password;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Column
     private String name;
