@@ -78,10 +78,10 @@ public class MovieController {
             if ((name.equals(username)) && (password.equals(ppassword))){
                 if (status == 0){
                     status = 1;
-                    modelAndView.setViewName("loginSuccess");
+                    modelAndView.setViewName("booked");
                 // System.out.println(status);
-                    model.addAttribute("loginMessage","Successfully Logined!");
-                    model.addAttribute("loginMessage2","You have successfully logged in.");
+                    model.addAttribute("bookedmessage","Successfully Logined!");
+                    model.addAttribute("bookedmessage2","You have successfully logged in.");
                     return modelAndView;
                 }
                 else{
