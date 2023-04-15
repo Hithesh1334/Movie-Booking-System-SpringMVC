@@ -9,3 +9,10 @@
 4. Book movie
 5. Make Payment
 6. Cancle booking
+
+* UI 
+1. 
+![alt text](Images\UI1.png)
+----
+2. 
+![alt text](Images\UI2.png)
