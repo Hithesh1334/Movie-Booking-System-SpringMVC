@@ -16,15 +16,18 @@ public class listMovies {
     @Column 
     private int availability;
 
+    private String image;
+
     public listMovies(){
 
     }
 
-    public listMovies(int id,String name,String date,int availability) {
+    public listMovies(int id,String name,String date,int availability,String image) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.availability = availability;
+        this.image = image;
     }
 
     public String getName() {
@@ -51,6 +54,14 @@ public class listMovies {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }
