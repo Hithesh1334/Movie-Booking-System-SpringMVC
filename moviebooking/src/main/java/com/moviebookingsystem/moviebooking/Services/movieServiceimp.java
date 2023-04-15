@@ -23,6 +23,7 @@ public class movieServiceimp implements movieService{
     private final addUserRepository addUserRepository;
     private final addUserBookingRepository addUserBookingRepository;
     private final cancleBookingRepository cancleBookingRepository;
+    
 
     public movieServiceimp(listMovieRepository movieRepository,loginAuthRepository loginAuthRepository,addUserRepository addUserRepository,addUserBookingRepository addUserBookingRepository,cancleBookingRepository cancleBookingRepository) {
         System.out.println("SERVICEIMP");
@@ -93,4 +94,11 @@ public class movieServiceimp implements movieService{
         throw new UnsupportedOperationException("Unimplemented method 'deletBooking'");
     }
 
+
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Override
+    public List<addUserBooking> findAllBookings() {
+        System.out.println("SELECT");
+        return addUserBookingRepository.findAll();
+    }
 }

@@ -13,5 +13,6 @@ public interface movieService {
     public addUser saveUser();
     public addUserBooking saveUserBooking();
     public void deleteBooking();
+    public List<addUserBooking> findAllBookings();
 }
 

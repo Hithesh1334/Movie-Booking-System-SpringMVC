@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.moviebookingsystem.moviebooking.Model.addUserBooking;
 import com.moviebookingsystem.moviebooking.Model.listMovies;
 import com.moviebookingsystem.moviebooking.Model.loginAuth;
 import com.moviebookingsystem.moviebooking.Services.movieServiceimp;
@@ -182,9 +183,20 @@ public class MovieController {
     public ModelAndView cancleBooking(@RequestParam("id") int id,Model model){
         ModelAndView modelAndView = new ModelAndView();
         System.out.println(id);
-        service.deleteBooking(id);
+        List<addUserBooking> data =  service.findAllBookings();
+        for(int i=0;i<data.size();i++){
+            addUserBooking userbooking = data.get(i);
+            int idd = userbooking.getMovieId();
+            if(idd == id){
+                service.deleteBooking(id);
+                modelAndView.setViewName("booked");
+                model.addAttribute("bookedmessage","Cancled successfully");
+                model.addAttribute("bookedmessage2","!");
+                return modelAndView;
+            }
+        }
         modelAndView.setViewName("booked");
-        model.addAttribute("bookedmessage","Cancled successfully");
+        model.addAttribute("bookedmessage","No booking available");
         model.addAttribute("bookedmessage2","!");
         return modelAndView;
     }

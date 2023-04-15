@@ -8,22 +8,25 @@ public class cancleBooking {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private int movieId;
+
+    
+    public cancleBooking(int movieId) {
+        this.movieId = movieId;
+    }
 
     public cancleBooking(){
-        
+
     }
 
-    public int getId() {
-        return id;
+    
+
+    public int getmovieId() {
+        return movieId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public cancleBooking(int id) {
-        this.id = id;
+    public void setmovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     
