@@ -1,8 +1,14 @@
 # Movie-Booking-System-SpringMVC
 
 ------
+* Database: Mysql
+* Frontend: Html
+* Backend: java
+* Architecture : MVC
+* Framework : Spring
 
 
+This project Includes
 1. Login 
 2. Register
 3. View movies
