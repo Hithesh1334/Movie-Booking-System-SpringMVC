@@ -15,6 +15,7 @@ This project Includes
 4. Book movie
 5. Make Payment
 6. Cancle booking
+7. Admin
 
 * UI 
 1. 
