@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 @Table(name="movie")
 public class listMovies {
     
-    @Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
     private int id;
     @Column
     private String name;
@@ -16,18 +15,15 @@ public class listMovies {
     @Column 
     private int availability;
 
-    private String image;
-
     public listMovies(){
 
     }
 
-    public listMovies(int id,String name,String date,int availability,String image) {
+    public listMovies(int id,String name,String date,int availability) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.availability = availability;
-        this.image = image;
     }
 
     public String getName() {
@@ -56,12 +52,5 @@ public class listMovies {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
 }

@@ -3,7 +3,7 @@ package com.moviebookingsystem.moviebooking.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="bookedmovie")
+@Table(name="movieBooked")
 public class cancleBooking {
     
     @Id

@@ -3,15 +3,14 @@ package com.moviebookingsystem.moviebooking.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="bookedmovie")
+@Table(name="movieBooked")
 public class addUserBooking {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-
     private int movieId;
     
+    private int quantity;
+
     private String movieName;
 
     private String userName;
@@ -20,16 +19,12 @@ public class addUserBooking {
 
     private String phoneNo;
 
-    public int getId() {
-        return id;
-    }
 
     public addUserBooking(){
         
     }
 
-    public addUserBooking(int id, int movieId, String movieName, String userName, String email, String phoneNo) {
-        this.id = id;
+    public addUserBooking( int movieId, String movieName, String userName, String email, String phoneNo) {
         this.movieId = movieId;
         this.movieName = movieName;
         this.userName = userName;
@@ -37,9 +32,7 @@ public class addUserBooking {
         this.phoneNo = phoneNo;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     public int getMovieId() {
         return movieId;
@@ -79,6 +72,14 @@ public class addUserBooking {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
 }

@@ -40,24 +40,44 @@
   <h1 class="text-center bg-primary">Fresh releases in cinemas</h1>
   <div class="mt-5" >
  
-  <style>
-    .card-title,h1 {
-      font-size: 30px;
-      font-family: 'Times New Roman', sans-serif;
-      margin-bottom: 10px;
-      padding:10px;
-      text-align: center;
-      background-color: #e1f5fe ;
-    }
-    h1{
-      color:white;
-    }
-    nav{
-        font-family: 'Times New Roman', sans-serif;
+    <style>
+      /* Add some padding to the table */
+      .table-responsive {
+        padding: 20px;
+      }
+      
+      /* Add a background color and border to the table headers */
+      .table thead th {
+        background-color: #343a40;
+        color: #fff;
+        border: 1px solid #dee2e6;
+      }
+      
+      /* Add a border to all table cells */
+      .table td, .table th {
+        border: 1px solid #dee2e6;
+        vertical-align: middle;
+      }
+      
+      /* Add some padding to the book button */
+      .book-btn {
+        padding: 5px 10px;
+      }
+      
+      /* Change the color of the book button on hover */
+      .book-btn:hover {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+      
+      /* Change the color of the book button when active */
+      .book-btn:active {
+        background-color: #0069d9;
+        border-color: #0062cc;
       }
     </style>
 
-  <form method="post" action="/book" id="booking-form">
+  <!-- <form method="post" action="/book" id="booking-form">
     <div class="row row-cols-1 row-cols-md-2" th:each="movie : ${data}">
       <div class="col mb-4">
         <div class="card h-100">
@@ -74,7 +94,37 @@
         </div>
       </div>
     </div>
+  </form> -->
+  <form method="post" action="/book" id="booking-form">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Movie Name</th>
+            <th>Movie ID</th>
+            <th>Date of Release</th>
+            <th>Availability</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="movie : ${data}">
+            <td th:text="${movie.name}"></td>
+            <td th:text="${movie.id}"></td>
+            <td th:text="${movie.date}"></td>
+            <td>
+              <span id="availability-${movie.id}" th:text="${movie.availability}"></span>
+            </td>
+            <td>
+              <input type="hidden" name="id" th:value="${movie.id}"/>
+              <button type="button" class="btn btn-primary book-btn">Book Now</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </form>
+  
 
   <script>
     const bookBtns = document.querySelectorAll('.book-btn');

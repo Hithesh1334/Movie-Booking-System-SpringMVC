@@ -6,10 +6,10 @@ import jakarta.persistence.*;
 @Table(name="login")
 public class addUser {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id; 
     
+    // @GeneratedValue(strategy=GenerationType.IDENTITY)
+    // private int id; 
+    @Id
     private String password;
 
     private String name;
@@ -28,22 +28,15 @@ public class addUser {
 
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     public String getPassword() {
         return password;
     }
 
-    public addUser(String password, String name,int id,String email) {
+    public addUser(String password, String name,String email) {
         this.password = password;
         this.name = name;
-        this.id = id;
         this.email = email;
     }
 
