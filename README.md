@@ -1,5 +1,13 @@
 # Movie-Booking-System-SpringMVC
 
+# C5_140_151_166_177
+
+* Contributers
+1. Chirag G
+2. Gautam R A
+3. Hithesh Pate
+4. Jayasimha S
+
 ------
 * Database: Mysql
 * Frontend: Html
@@ -31,8 +39,4 @@ This project Includes
 ![Images\UI2.png](https://github.com/Hithesh1334/Movie-Booking-System-SpringMVC/blob/master/Images/UI2.png)
 >>>>>>> 783a9fbb42af6dfd9e363fe692d49d7ae7a0bc07
 
-* Contributers
-1. Chirag G
-2. Gautam R A
-3. Hithesh Pate
-4. Jayasimha S
+
